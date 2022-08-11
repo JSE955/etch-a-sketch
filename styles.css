@@ -1,23 +1,35 @@
+body {
+    background-color: #262626;
+}
+
 .container {
     display: flex;
     flex-direction: column;
+    width: 600px;
+    height: 600px;
+    margin: 10px auto 10px auto;
+    background-color: white;
 
 }
 
 .row {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex: 1 1 auto;
+    min-height: 0;
 }
 
 .cell {
     border-style: solid;
     border-color: black;
     border-width: 1px;
-    height: 50px;
-    width: 50px;
+    flex: 1 1 auto;
 }
 
 .cell.hover {
     background-color: black;
+}
+
+.buttonContainer {
+    text-align: center;
+    margin: 20px auto 20px auto;
 }

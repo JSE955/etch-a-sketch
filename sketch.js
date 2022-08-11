@@ -1,17 +1,10 @@
 const container = document.querySelector('.container');
+const squaresButton = document.querySelector('.squares');
+let numberOfSquares;
+let rowsToRemove;
 
 // Create the 16x16 grid.
-for (let i = 1; i <= 16; i++) {
-    let row = document.createElement('div');
-    row.classList.add('row');
-
-    for (let j = 1; j <= 16; j++) {
-        let cell = document.createElement('div');
-        cell.classList.add('cell');
-        row.appendChild(cell);
-    }
-    container.appendChild(row);
-}
+createGrid(16);
 
 // Create the pixelated trail through grid when mousing over.
 const cells = document.querySelectorAll('div.cell');
@@ -20,3 +13,30 @@ cells.forEach((cell) => {
         cell.classList.add('hover');
     });
 });
+
+function removeRows() {
+    rowsToRemove = document.querySelectorAll('.row');
+    rowsToRemove.forEach((row) => {
+        container.removeChild(row);
+    });
+};
+
+function createGrid(numSquares) {
+    for (let i = 1; i <= numSquares; i++) {
+        let row = document.createElement('div');
+        row.classList.add('row');
+    
+        for (let j = 1; j <= numSquares; j++) {
+            let cell = document.createElement('div');
+            cell.classList.add('cell');
+            row.appendChild(cell);
+        }
+        container.appendChild(row);
+    }
+}
+
+squaresButton.addEventListener('click', () => {
+    numberOfSquares = parseInt(prompt('Enter number of squares per side for grid'));
+    removeRows();
+    createGrid(numberOfSquares);
+})

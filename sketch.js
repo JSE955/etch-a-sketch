@@ -2,12 +2,23 @@ const container = document.querySelector('.container');
 const squaresButton = document.querySelector('.squares');
 let numberOfSquares;
 let rowsToRemove;
+let cells;
 
 // Create the 16x16 grid.
 createGrid(16);
+cellTrail();
 
 // Create the pixelated trail through grid when mousing over.
-const cells = document.querySelectorAll('div.cell');
+function cellTrail() {
+    cells = document.querySelectorAll('div.cell');
+cells.forEach((cell) => {
+    cell.addEventListener('mouseover', () => {
+        cell.classList.add('hover');
+    });
+});
+}
+
+cells = document.querySelectorAll('div.cell');
 cells.forEach((cell) => {
     cell.addEventListener('mouseover', () => {
         cell.classList.add('hover');
@@ -39,4 +50,5 @@ squaresButton.addEventListener('click', () => {
     numberOfSquares = parseInt(prompt('Enter number of squares per side for grid'));
     removeRows();
     createGrid(numberOfSquares);
+    cellTrail();
 })

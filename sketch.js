@@ -8,8 +8,15 @@ function createGrid(squaresPerSide) {
         for (let j = 0; j < squaresPerSide; j++) {
             const cell = document.createElement("div");
             cell.classList.toggle("cell");
+            addHoverEventListener(cell);
             row.appendChild(cell);
         }
         container.appendChild(row);
     }
+}
+
+function addHoverEventListener(cell) {
+    cell.addEventListener("mouseover", () => {
+        cell.style.backgroundColor = "black";
+    })
 }

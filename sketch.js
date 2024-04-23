@@ -1,4 +1,14 @@
 const container = document.querySelector(".container");
+const editButton = document.querySelector(".editButton");
+editButton.addEventListener("click", () => {
+    let dimension = parseInt(prompt("Enter the number of squares per side for grid"));
+    while (container.firstChild) {
+        container.removeChild(container.lastChild);
+    }
+    createGrid(dimension);
+})
+
+
 createGrid(16);
 
 function createGrid(squaresPerSide) {
